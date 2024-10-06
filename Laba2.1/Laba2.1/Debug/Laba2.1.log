@@ -1,0 +1,7 @@
+﻿  Laba2.1.cpp
+C:\Users\Александр\source\repos\Laba2.1\Laba2.1\Laba2.1.cpp(64,17): warning C4101: end: неиспользованная локальная переменная
+C:\Users\Александр\source\repos\Laba2.1\Laba2.1\Laba2.1.cpp(66,44): warning C4101: mas4: неиспользованная локальная переменная
+C:\Users\Александр\source\repos\Laba2.1\Laba2.1\Laba2.1.cpp(64,10): warning C4101: start: неиспользованная локальная переменная
+C:\Users\Александр\source\repos\Laba2.1\Laba2.1\Laba2.1.cpp(66,32): warning C4101: mas3: неиспользованная локальная переменная
+C:\Users\Александр\source\repos\Laba2.1\Laba2.1\Laba2.1.cpp(65,20): warning C4101: r: неиспользованная локальная переменная
+  Laba2.1.vcxproj -> C:\Users\Александр\source\repos\Laba2.1\Debug\Laba2.1.exe

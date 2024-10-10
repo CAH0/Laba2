@@ -48,6 +48,11 @@ void qs(int* items, int left, int right) //вызов функции: qs(items, 
 	if (i < right) qs(items, i, right);
 }
 
+int compare(const void* x1, const void* x2)   // функция сравнения элементов массива
+{
+	return (*(int*)x1 - *(int*)x2);              // если результат вычитания равен 0, то числа равны, < 0: x1 < x2; > 0: x1 > x2
+}
+
 
 int main(void)
 {
@@ -58,11 +63,13 @@ int main(void)
 
 	clock_t start, end;
 	int i = 0, j = 0, r, min = -1000, max = 1000, c = 10000;
-	int mas1[10000], mas2[10000];
+	int mas1[10000], mas2[10000], mas3[10000];
 	for (int i = 0; i < c; i++)
 	{
 		mas1[i] = min + rand() % (max - min + 1);
 		mas2[i] = mas1[i];
+		mas3[i] = mas1[i];
+
 	}
 	clock_t starttime, endtime;
 
@@ -79,11 +86,18 @@ int main(void)
 	t = (float)(endtime - starttime) / (float)CLOCKS_PER_SEC;
 	printf("Быстрая сортировка на случайно наборе: %f\n", t);
 
+	starttime = clock();
+	qsort(mas3, c, sizeof(int), compare);
+	endtime = clock();
+	t = (float)(endtime - starttime) / (float)CLOCKS_PER_SEC;
+	printf("Функция qsort() на случайно наборе: %f\n", t);
+
 	// возрастающая
 	for (int ii = 0; i < c; i++)
 	{
 		mas1[i] = i;
 		mas2[i] = i;
+		mas3[i] = i;
 	}
 
 	starttime = clock();
@@ -98,6 +112,12 @@ int main(void)
 	t = (float)(endtime - starttime) / (float)CLOCKS_PER_SEC;
 	printf("Быстрая сортировка на возрастающей последовательности чисел: %f\n", t);
 
+	starttime = clock();
+	qsort(mas3, c, sizeof(int), compare);
+	endtime = clock();
+	t = (float)(endtime - starttime) / (float)CLOCKS_PER_SEC;
+	printf("Функция qsort() на возрастающей последовательности чисел: %f\n", t);
+
 	// Убывающая
 	for (int ii = 0; i < c; i++)
 	{
@@ -110,6 +130,7 @@ int main(void)
 			mas1[i] = c - i;
 		}
 		mas2[i] = mas1[i];
+		mas3[i] = mas1[i];
 	}
 
 	starttime = clock();
@@ -124,11 +145,18 @@ int main(void)
 	t = (float)(endtime - starttime) / (float)CLOCKS_PER_SEC;
 	printf("Быстрая сортировка на убывающей последовательности чисел: %f\n", t);
 
+	starttime = clock();
+	qsort(mas3, c, sizeof(int), compare);
+	endtime = clock();
+	t = (float)(endtime - starttime) / (float)CLOCKS_PER_SEC;
+	printf("Функция qsort() на убывающей последовательности чисел: %f\n", t);
+
 	// возрастающая - убывающая
 	for (int ii = 0; i < c; i++)
 	{
 		mas1[i] = c - i;
 		mas2[i] = c - i;
+		mas3[i] = c - i;
 	}
 
 	starttime = clock();
@@ -142,5 +170,11 @@ int main(void)
 	endtime = clock();
 	t = (float)(endtime - starttime) / (float)CLOCKS_PER_SEC;
 	printf("Быстрая сортировка на возраст - убыв последовательности чисел: %f\n", t);
+
+	starttime = clock();
+	qsort(mas3, c, sizeof(int), compare);
+	endtime = clock();
+	t = (float)(endtime - starttime) / (float)CLOCKS_PER_SEC;
+	printf("Функция qsort() на возраст - убыв последовательности чисел: %f\n", t);
 
 }
